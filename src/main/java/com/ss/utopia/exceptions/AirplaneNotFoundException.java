@@ -1,4 +1,4 @@
-package com.utopia.exeptions;
+package com.ss.utopia.exceptions;
 
 public class AirplaneNotFoundException extends Exception {
 
@@ -9,5 +9,4 @@ public class AirplaneNotFoundException extends Exception {
 	public AirplaneNotFoundException(String message) {
 		super(message);
 	}
-
 }

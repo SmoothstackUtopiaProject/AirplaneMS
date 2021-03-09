@@ -1,4 +1,4 @@
-package com.utopia.models;
+package com.ss.utopia.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,24 +14,24 @@ public class AirplaneType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private Integer id;
+	private Integer airplaneTypeId;
 	
 	@Column(name = "max_capacity")
 	private Integer capacity;
 	
 	public AirplaneType() {};
 	
-	public AirplaneType(Integer id) {
+	public AirplaneType(Integer airplaneTypeId) {
 		super();
-		this.id = id;
+		this.airplaneTypeId = airplaneTypeId;
 	}
 
-	public Integer getId() {
-		return id;
+	public Integer getAirplaneTypeId() {
+		return airplaneTypeId;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setAirplaneTypeId(Integer airplaneTypeId) {
+		this.airplaneTypeId = airplaneTypeId;
 	}
 
 	public Integer getCapacity() {
@@ -41,5 +41,4 @@ public class AirplaneType {
 	public void setCapacity(Integer capacity) {
 		this.capacity = capacity;
 	}
-	
 }
