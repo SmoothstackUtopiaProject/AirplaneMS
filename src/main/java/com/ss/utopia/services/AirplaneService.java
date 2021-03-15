@@ -9,8 +9,6 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ss.utopia.exceptions.AirplaneNotFoundException;
 import com.ss.utopia.exceptions.AirplaneTypeNotFoundException;
 import com.ss.utopia.models.Airplane;
@@ -25,6 +23,10 @@ public class AirplaneService {
 
 	public List<Airplane> findAll() {
 		return airplaneRepository.findAll();
+	}
+
+	public List<AirplaneType> findAllAirplaneTypes() {
+		return airplaneRepository.findAllAirplaneTypes();
 	}
 	
 	public Airplane findById(Integer airplaneId) throws AirplaneNotFoundException {
@@ -63,17 +65,17 @@ public class AirplaneService {
 		}
 
 		// Type Name
-		String airplaneTypeName = "airplaneTypeName";
-		if(filterMap.keySet().contains(airplaneTypeName)) {
-			try {
-				String parsedAirplaneTypeName = filterMap.get(airplaneTypeName);
-				List<Integer> airplaneTypeIDsWithName = new ArrayList<Integer>(); // findAirplaneTypesByName(filterMap.get(parsedTypeName));
+		// String airplaneTypeName = "airplaneTypeName";
+		// if(filterMap.keySet().contains(airplaneTypeName)) {
+		// 	try {
+		// 		String parsedAirplaneTypeName = filterMap.get(airplaneTypeName);
+		// 		List<Integer> airplaneTypeIDsWithName = new ArrayList<Integer>(); // TODO findAirplaneTypesByName(filterMap.get(parsedTypeName));
 
-				airplanes = airplanes.stream()
-				.filter(i -> airplaneTypeIDsWithName.contains(i.getAirplaneTypeId()))
-				.collect(Collectors.toList());
-			} catch(Exception err){/*Do nothing*/}
-		}
+		// 		airplanes = airplanes.stream()
+		// 		.filter(i -> airplaneTypeIDsWithName.contains(i.getAirplaneTypeId()))
+		// 		.collect(Collectors.toList());
+		// 	} catch(Exception err){/*Do nothing*/}
+		// }
 
 		// Search - (applied last due to save CPU usage
 		return applySearch(airplanes, filterMap);
@@ -87,26 +89,21 @@ public class AirplaneService {
 			String formattedSearch = filterMap.get(searchTerms)
 			.toLowerCase()
 			.replace(", ", ",");
+
 			String[] splitTerms = formattedSearch.split(",");
-			ObjectMapper mapper = new ObjectMapper();
 			
 			for(Airplane airplane : airplanes) {
 				boolean containsSearchTerms = true;
 				
-				try {
-					String airplaneAsString = mapper.writeValueAsString(airplane)
-					.toLowerCase()
-					.replace("airplaneid", "")
-					.replace("airplanetypeid", "");
-					
-					for(String term : splitTerms) {
-						if(!airplaneAsString.contains(term)) {
-							containsSearchTerms = false;
-							break;
-						}
+				String airplaneAsString = airplane.getAirplaneId().toString() + 
+				airplane.getAirplaneTypeId().toString()
+				.toLowerCase();
+				
+				for(String term : splitTerms) {
+					if(!airplaneAsString.contains(term)) {
+						containsSearchTerms = false;
+						break;
 					}
-				} catch(JsonProcessingException err){
-					containsSearchTerms = false;
 				}
 
 				if(containsSearchTerms) {
