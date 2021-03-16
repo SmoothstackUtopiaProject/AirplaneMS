@@ -5,15 +5,16 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                mvn clean package
+                pwd
+                //mvn clean package
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                docker build -t utopiaairplanems .
-                docker tag utopiaairplanems:latest public.ecr.aws/v8i4g2b7/utopiaairplanems:latest
-                docker push public.ecr.aws/v8i4g2b7/utopiaairplanems:latest
+                //docker build -t utopiaairplanems .
+                //docker tag utopiaairplanems:latest public.ecr.aws/v8i4g2b7/utopiaairplanems:latest
+                //docker push public.ecr.aws/v8i4g2b7/utopiaairplanems:latest
             }
         }
     }
