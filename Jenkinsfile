@@ -13,10 +13,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                sh "ls"
-                //docker build -t utopiaairplanems .
-                //docker tag utopiaairplanems:latest public.ecr.aws/v8i4g2b7/utopiaairplanems:latest
-                //docker push public.ecr.aws/v8i4g2b7/utopiaairplanems:latest
+                sh "docker build -t utopiaairplanems ."
+                sh "docker tag utopiaairplanems:latest public.ecr.aws/v8i4g2b7/utopiaairplanems:latest"
+                sh "docker push public.ecr.aws/v8i4g2b7/utopiaairplanems:latest"
             }
         }
     }
