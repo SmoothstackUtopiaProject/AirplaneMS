@@ -6,6 +6,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 script {
+                    echo 'called'
                     pwd
                 }
                 //mvn clean package
