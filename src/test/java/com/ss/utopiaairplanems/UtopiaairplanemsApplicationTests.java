@@ -1,14 +1,13 @@
-// package com.utopia;
+// package com.ss.utopiaairplanems;
 
 // import org.junit.jupiter.api.Test;
 // import org.springframework.boot.test.context.SpringBootTest;
 
 // @SpringBootTest
-// class UtopiaAirplaneMSTests {
+// class UtopiaairplanemsApplicationTests {
 
 // 	@Test
 // 	void contextLoads() {
-		
 // 	}
 
 // }
