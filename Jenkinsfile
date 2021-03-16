@@ -19,10 +19,10 @@ pipeline {
                 
                 sh "docker build -t utopiaairplanems ."
                 //sh "docker tag utopiaairplanems:latest public.ecr.aws/v8i4g2b7/utopiaairplanems:latest"
-                sh "docker tag utopiaairplanems:latest 466486113081.dkr.ecr.us-east-1.amazonaws.com/utopiaairlineswut/utopiaairplanems:latest"
+                sh "docker tag utopiaairplanems:latest 466486113081.dkr.ecr.us-east-1.amazonaws.com/utopiaairlines/airplanems:latest"
                 
                 //sh "docker push public.ecr.aws/v8i4g2b7/utopiaairplanems:latest"
-                sh "docker push 466486113081.dkr.ecr.us-east-1.amazonaws.com/utopiaairlineswut/utopiaairplanems:latest"
+                sh "docker push 466486113081.dkr.ecr.us-east-1.amazonaws.com/utopiaairlines/airplanems:latest"
             }
         }
     }
