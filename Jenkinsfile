@@ -6,15 +6,14 @@ pipeline {
             steps {
                 echo 'Building..'
                 script {
-                    mvn clean 
-                    mvn package
+                    sh "mvn clean package"
                 }
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                ls
+                sh "ls"
                 //docker build -t utopiaairplanems .
                 //docker tag utopiaairplanems:latest public.ecr.aws/v8i4g2b7/utopiaairplanems:latest
                 //docker push public.ecr.aws/v8i4g2b7/utopiaairplanems:latest
