@@ -5,7 +5,9 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                pwd
+                script {
+                    pwd
+                }
                 //mvn clean package
             }
         }
