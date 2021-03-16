@@ -6,7 +6,8 @@ pipeline {
             steps {
                 echo 'Building..'
                 script {
-                    mvn clean package
+                    mvn clean 
+                    mvn package
                 }
             }
         }
