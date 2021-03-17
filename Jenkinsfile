@@ -9,7 +9,6 @@ pipeline {
             steps {
                 echo 'Building..'
                 script {
-                    sh "env"
                     sh "mvn clean package"
                 }
             }
