@@ -23,7 +23,7 @@ pipeline {
            steps {
                sh "rm ECSService.yml"
                sh "wget https://github.com/SmoothstackUtopiaProject/CloudFormationTemplates/blob/main/ECSService.yml"
-               sh "aws cloudformation deploy --stack-name UtopiaAirplaneMS --template-file ECSService.yml --parameter-overrides ApplicationName=UtopiaAirplaneMS DBHost=$DB_HOST DBName=$DB_NAME DBPort=$DB_PORT ECRepositoryURI=466486113081.dkr.ecr.us-east-1.amazonaws.com/utopiaairlines/airplanems:latest SecurityGroupID=$SECURITYGROUPID SubnetID=$SUBNETID"
+               sh "aws cloudformation deploy --stack-name UtopiaAirplaneMS --template-file ECSService.yml --parameter-overrides ApplicationName=UtopiaAirplaneMS DBHost=$DB_HOST DBName=$DB_NAME DBPort=$DB_PORT ECRepositoryURI=466486113081.dkr.ecr.us-east-1.amazonaws.com/utopiaairlines/airplanems:latest SecurityGroupID=$SECURITYGROUPID SubnetID=$SUBNETID --capabilities \"CAPABILITY_IAM\" \"CAPABILITY_NAMED_IAM\""
            }
         }
     }
