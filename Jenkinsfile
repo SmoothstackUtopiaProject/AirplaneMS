@@ -9,7 +9,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh "env"
-                sh "echo $COMMIT_HASH"
+                sh "echo ${COMMIT_HASH}"
                 script {
                     sh "mvn clean package"
                 }
