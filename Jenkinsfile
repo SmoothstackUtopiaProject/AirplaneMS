@@ -1,15 +1,15 @@
 pipeline {
     agent any
     environment {
-        COMMIT_HASH=sh "git rev-parse --short HEAD"
+        COMMIT_HASH= sh "echo git rev-parse --short HEAD"
     }
 
     stages {
         stage('Package') {
             steps {
                 echo 'Building..'
-                sh "env"
                 sh "echo ${COMMIT_HASH}"
+                sh "env"
                 script {
                     sh "mvn clean package"
                 }
