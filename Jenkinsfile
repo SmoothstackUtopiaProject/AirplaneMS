@@ -22,7 +22,7 @@ pipeline {
         stage('Deploy') {
            steps {
                sh 
-                '''aws cloudformation create-stack --stack-name UtopiaAirplaneMS --template-body
+                "aws cloudformation create-stack --stack-name UtopiaAirplaneMS --template-body
                 https://github.com/SmoothstackUtopiaProject/CloudFormationTemplates/blob/main/ECSService.ymll --parameters
                 ParameterKey=ApplicationEnvironment, ParameterValue=$ApplicationEnvironment,
                 ParameterKey=ApplicationName, ParameterValue=UtopiaAirplaneMS,
@@ -32,7 +32,7 @@ pipeline {
                 ParameterKey=ECRepositoryURI, ParameterValue=466486113081.dkr.ecr.us-east-1.amazonaws.com/utopiaairlines/airplanems:latest,
                 ParameterKey=SecurityGroupID, ParameterValue=$SECURITYGROUPID,
                 ParameterKey=SubnetID, ParameterValue=$SUBNETID
-                '''
+                "
            }
         }
     }
