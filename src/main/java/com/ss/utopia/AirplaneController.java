@@ -8,6 +8,7 @@ import java.util.Map;
 import com.ss.utopia.exceptions.AirplaneNotFoundException;
 import com.ss.utopia.exceptions.AirplaneTypeNotFoundException;
 import com.ss.utopia.models.Airplane;
+import com.ss.utopia.models.AirplaneType;
 import com.ss.utopia.models.HttpError;
 import com.ss.utopia.services.AirplaneService;
 
@@ -60,6 +61,14 @@ public class AirplaneController {
 				HttpStatus.BAD_REQUEST
 			);
 		}
+	}
+
+	@GetMapping("/types")
+	public ResponseEntity<Object> findAllTypes() {
+		List<AirplaneType> airplaneTypesList = airplaneService.findAllAirplaneTypes();
+		return !airplaneTypesList.isEmpty()
+			? new ResponseEntity<>(airplaneTypesList, HttpStatus.OK)
+			: new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 	
 	@PostMapping("/search")
