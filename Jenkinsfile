@@ -22,8 +22,8 @@ pipeline {
         stage('Deploy') {
            steps {
                sh "rm ECSService.yml"
-               sh "wget https://github.com/SmoothstackUtopiaProject/CloudFormationTemplates/blob/main/ECSService.yml"
-               sh "aws cloudformation create-stack --stack-name UtopiaAirplaneMS --template-body file://./ECSService.yml --capabilities \"CAPABILITY_IAM\" \"CAPABILITY_NAMED_IAM\""
+               sh "wget https://raw.githubusercontent.com/SmoothstackUtopiaProject/CloudFormationTemplates/main/ECSService.yml"
+               sh "aws cloudformation deploy --stack-name UtopiaAirplaneMS --template-file file://./ECSService.yml --capabilities \"CAPABILITY_IAM\" \"CAPABILITY_NAMED_IAM\""
            }
         }
     }
