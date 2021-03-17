@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Package') {
             steps {
                 echo 'Building..'
                 script {
@@ -10,7 +10,7 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {
+        stage('Build') {
             steps {
                 echo 'Deploying....'
                 //sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/v8i4g2b7"
@@ -25,5 +25,13 @@ pipeline {
                 sh "docker push 466486113081.dkr.ecr.us-east-1.amazonaws.com/utopiaairlines/airplanems:latest"
             }
         }
+        //stage('Deploy') {
+          //  steps {
+            //    sh "aws cloudformation create-stack --stack-name myteststack --template-body  \\
+              //      file://template.yml --parameters \\ 
+                //    ParameterKey=ApplicationEnvironment, ParameterValue=$ApplicationEnvironment  \\
+                  //  ParameterKey=DBName, ParameterValue=$DBname"
+           // }
+        //}
     }
 }
