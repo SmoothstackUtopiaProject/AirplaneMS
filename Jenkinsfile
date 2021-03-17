@@ -14,7 +14,7 @@ pipeline {
             steps {
                 echo 'Deploying....'
                 //sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/v8i4g2b7"
-                sh "aws ecr get-login-password --region us-east-1 --profile=utopiaairlines | docker login --username AWS --password-stdin 466486113081.dkr.ecr.us-east-1.amazonaws.com"
+                sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 466486113081.dkr.ecr.us-east-1.amazonaws.com"
                 
                 
                 sh "docker build -t utopiaairplanems ."
