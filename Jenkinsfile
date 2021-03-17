@@ -15,8 +15,8 @@ pipeline {
                 echo 'Deploying....'
                 sh "aws ecr get-login-password --region us-east-1 --profile=default | docker login --username AWS --password-stdin 466486113081.dkr.ecr.us-east-1.amazonaws.com"                
                 sh "docker build -t utopiaairplanems ."
-                sh "export COMMIT_HASH=\$(git rev-parse --short HEAD)"
-                sh env
+                sh "env.COMMIT_HASH=\$(git rev-parse --short HEAD)"
+                sh "env"
                 sh "docker tag utopiaairplanems:$COMMIT_HASH 466486113081.dkr.ecr.us-east-1.amazonaws.com/utopiaairlines/airplanems:$COMMIT_HASH"
                 sh "docker push 466486113081.dkr.ecr.us-east-1.amazonaws.com/utopiaairlines/airplanems:$COMMIT_HASH"
             }
