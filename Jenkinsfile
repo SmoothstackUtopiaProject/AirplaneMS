@@ -30,5 +30,10 @@ pipeline {
                sh "aws cloudformation deploy --stack-name UtopiaAirplaneMS --template-file ./ECSService.yml --parameter-overrides ECRepositoryUri=466486113081.dkr.ecr.us-east-1.amazonaws.com/utopiaairlines/airplanems:$COMMIT_HASH --capabilities \"CAPABILITY_IAM\" \"CAPABILITY_NAMED_IAM\""
            }
         }
+        stage('Cleanup') {
+            steps {
+                sh "docker system prune -f"
+            }
+        }
     }
 }
