@@ -16,7 +16,6 @@ pipeline {
                 sh "aws ecr get-login-password --region us-east-1 --profile=default | docker login --username AWS --password-stdin 466486113081.dkr.ecr.us-east-1.amazonaws.com"                
                 sh "docker build -t utopiaairplanems ."
                 sh "COMMIT_HASH=\$(git rev-parse --short HEAD)"
-                sh "echo 1 $COMMIT_HASH"
                 sh "echo 2 ${COMMIT_HASH}"
                 sh "echo 3 \${COMMIT_HASH}"
                 sh "echo 4 COMMIT_HASH"
