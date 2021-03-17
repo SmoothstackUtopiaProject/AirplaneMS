@@ -24,7 +24,7 @@ pipeline {
            steps {
                sh "rm ECSService.yml"
                sh "wget https://raw.githubusercontent.com/SmoothstackUtopiaProject/CloudFormationTemplates/main/ECSService.yml"
-               sh "aws cloudformation deploy --stack-name UtopiaAirplaneMS --template-file ./ECSService.yml --parameter-overrides ECRepositoryUri=466486113081.dkr.ecr.us-east-1.amazonaws.com/utopiaairlines/airplanems:${COMMIT_HASH} --capabilities \"CAPABILITY_IAM\" \"CAPABILITY_NAMED_IAM\""
+               sh "aws cloudformation deploy --stack-name UtopiaAirplaneMS --template-file ./ECSService.yml --parameter-overrides ECRepositoryUri=466486113081.dkr.ecr.us-east-1.amazonaws.com/utopiaairlines/airplanems:\${COMMIT_HASH} --capabilities \"CAPABILITY_IAM\" \"CAPABILITY_NAMED_IAM\""
            }
         }
     }
