@@ -21,7 +21,8 @@ pipeline {
         }
         stage('Deploy') {
            steps {
-               sh "aws cloudformation deploy --stack-name UtopiaAirplaneMS --template-file https://github.com/SmoothstackUtopiaProject/CloudFormationTemplates/blob/main/ECSService.yml --parameter-overrides ApplicationName=UtopiaAirplaneMS DBHost=$DB_HOST DBName=$DB_NAME DBPort=$DB_PORT ECRepositoryURI=466486113081.dkr.ecr.us-east-1.amazonaws.com/utopiaairlines/airplanems:latest SecurityGroupID=$SECURITYGROUPID SubnetID=$SUBNETID"
+               sh "wget https://github.com/SmoothstackUtopiaProject/CloudFormationTemplates/blob/main/ECSService.yml"
+               sh "aws cloudformation deploy --stack-name UtopiaAirplaneMS --template-file ECSService.yml --parameter-overrides ApplicationName=UtopiaAirplaneMS DBHost=$DB_HOST DBName=$DB_NAME DBPort=$DB_PORT ECRepositoryURI=466486113081.dkr.ecr.us-east-1.amazonaws.com/utopiaairlines/airplanems:latest SecurityGroupID=$SECURITYGROUPID SubnetID=$SUBNETID"
            }
         }
     }
