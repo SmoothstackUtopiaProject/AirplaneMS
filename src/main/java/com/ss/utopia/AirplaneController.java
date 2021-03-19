@@ -27,7 +27,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/airplanes")
 public class AirplaneController {
@@ -35,6 +34,11 @@ public class AirplaneController {
 	@Autowired
 	private AirplaneService airplaneService;
 	
+	@GetMapping()
+	public ResponseEntity<Object> health() {
+		return new ResponseEntity<>("\"status\": \"up\"", HttpStatus.OK);
+	}
+
 	@GetMapping
 	public ResponseEntity<Object> findAll() {
 		List<Airplane> airplanesList = airplaneService.findAll();
