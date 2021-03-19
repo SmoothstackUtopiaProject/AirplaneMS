@@ -33,7 +33,7 @@ public class AirplaneController {
 	@Autowired
 	private AirplaneService airplaneService;
 	
-	@GetMapping()
+	@GetMapping("/health")
 	public ResponseEntity<Object> health() {
 		return new ResponseEntity<>("\"status\": \"up\"", HttpStatus.OK);
 	}
