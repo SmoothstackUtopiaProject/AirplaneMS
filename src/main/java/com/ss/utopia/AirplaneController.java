@@ -9,7 +9,7 @@ import com.ss.utopia.exceptions.AirplaneNotFoundException;
 import com.ss.utopia.exceptions.AirplaneTypeNotFoundException;
 import com.ss.utopia.models.Airplane;
 import com.ss.utopia.models.AirplaneType;
-import com.ss.utopia.models.HttpError;
+import com.ss.utopia.models.ErrorMessage;
 import com.ss.utopia.services.AirplaneService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,10 +98,7 @@ public class AirplaneController {
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public ResponseEntity<Object> airplaneNotFoundException(Throwable err) {
 		return new ResponseEntity<>(
-			new HttpError(
-				err.getMessage(), 
-				HttpStatus.NOT_FOUND.value()
-			), 
+			new ErrorMessage(err.getMessage()), 
 			HttpStatus.NOT_FOUND
 		);
 	}
@@ -110,10 +107,7 @@ public class AirplaneController {
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public ResponseEntity<Object> airplaneTypeNotFoundException(Throwable err) {
 		return new ResponseEntity<>(
-			new HttpError(
-				err.getMessage(), 
-				HttpStatus.NOT_FOUND.value()
-			), 
+			new ErrorMessage(err.getMessage()), 
 			HttpStatus.NOT_FOUND
 		);
 	}
@@ -122,10 +116,7 @@ public class AirplaneController {
 	@ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
 	public ResponseEntity<Object> invalidConnection() {
 		return new ResponseEntity<>(
-			new HttpError(
-				"Service temporarily unavailabe.", 
-				HttpStatus.SERVICE_UNAVAILABLE.value()
-			), 
+			new ErrorMessage("Service temporarily unavailabe."), 
 			HttpStatus.SERVICE_UNAVAILABLE
 		);
 	}
@@ -134,10 +125,7 @@ public class AirplaneController {
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public ResponseEntity<Object> invalidMessage() {
 		return new ResponseEntity<>(
-			new HttpError(
-				"Invalid HTTP message content.", 
-				HttpStatus.BAD_REQUEST.value()
-			), 
+			new ErrorMessage("Invalid HTTP message content."), 
 			HttpStatus.BAD_REQUEST
 		);
 	}
@@ -146,10 +134,7 @@ public class AirplaneController {
 	@ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
 	public ResponseEntity<Object> invalidSQL() {
 		return new ResponseEntity<>(
-			new HttpError(
-				"Service temporarily unavailabe.", 
-				HttpStatus.SERVICE_UNAVAILABLE.value()
-			), 
+			new ErrorMessage("Service temporarily unavailabe."), 
 			HttpStatus.SERVICE_UNAVAILABLE
 		);
 	}
