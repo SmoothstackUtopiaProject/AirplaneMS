@@ -130,7 +130,6 @@ public class AirplaneService {
 
 	public Airplane update(Integer airplaneId, Integer airplaneTypeId) 
 	throws AirplaneNotFoundException, AirplaneTypeNotFoundException {
-
 		Optional<AirplaneType> optionalAirplaneType = airplaneRepository.findAirplaneTypeByAirplaneTypeId(airplaneTypeId);
 		if(!optionalAirplaneType.isPresent()) {
 			throw new AirplaneTypeNotFoundException("No AirplaneType with ID: " + airplaneTypeId + " exists.");
